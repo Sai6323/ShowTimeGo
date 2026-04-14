@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShowTimeGo</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="details.css">
+    <link rel="icon" href="logo.jpeg">
+</head>
+
+<body>
+    <div class="container my-5 movie-details p-4 shadow-sm rounded-4 bg-white">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h5 class="fw-semibold mb-0">Movie details</h5>
+                <p class="text-muted small mb-0">Mass Jathara</p>
+            </div>
+            <!-- Back button -->
+            <a href="movies.html" class="btn btn-sm btn-light rounded-circle">
+                <i class="bi bi-x-lg"></i>
+            </a>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs mb-4" id="movieTabs">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#synopsis">Synopsis</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#cast">Cast</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#posters">Posters</a></li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Synopsis -->
+            <div class="tab-pane fade show active" id="synopsis">
+                <p class="text-muted">
+                    Mass Jathara is a Telugu action entertainer directed by Bhanu Bogavarapu, featuring Ravi Teja and Sree Leela in pivotal roles.
+                </p>
+
+                <div class="movie-meta mb-4">
+                    <p><i class="bi bi-person-badge"></i> UA16+</p>
+                    <p><i class="bi bi-translate"></i> Telugu</p>
+                    <p><i class="bi bi-film">Action, Drama</i>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Cast -->
+            <div class="tab-pane fade" id="cast">
+                <div class="d-flex gap-4 flex-wrap">
+                    <div class="text-center">
+                        <img src="https://cdn.district.in/movies-assets/images/cinema/ravi-e1322c90-7cfc-11f0-8de0-9d1c38983d05.jpg?format=webp"
+                            class="cast-img rounded-circle">
+                        <p class="mt-2 small">Ravi Teja</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://cdn.district.in/movies-assets/images/cinema/sree-ecf616b0-b4e0-11f0-87f5-bbdd0e77bb1c.jpg?format=webp"
+                            class="cast-img rounded-circle">
+                        <p class="mt-2 small">Sree Leela</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://cdn.district.in/movies-assets/images/cinema/Naveen-Chandra-8a94c87a-e3f7-48ae-9435-d0fa9f8723a9.jpg?format=webp"
+                            class="cast-img rounded-circle">
+                        <p class="mt-2 small">Naveen Chandra</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://cdn.district.in/movies-assets/images/cinema/rajendra-prasad-20eb5b10-7df8-11ed-af72-ef9f24d260fa.jpg?format=webp"
+                            class="cast-img rounded-circle">
+                        <p class="mt-2 small">Rajendra Prasad</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Posters -->
+            <div class="tab-pane fade" id="posters">
+                <img src="https://cdn.district.in/movies-assets/images/cinema/massjat-galelry-08087870-dd5b-11ef-8289-71a0259fce4d.jpg"
+                    class="w-100 rounded-4 shadow-sm">
+            </div>
+        </div>
+    </div>
+
+      <div class="text-center mt-4">
+  <a href="ticket.html" class="book-btn" >Book tickets</a>
+</div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

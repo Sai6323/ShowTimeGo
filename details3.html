@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowTimeGo</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="details.css">
+  <link rel="icon" href="logo.jpeg">
+</head>
+<body>
+  <div class="container my-5 movie-details p-4 shadow-sm rounded-4 bg-white">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <h5 class="fw-semibold mb-0">Movie details</h5>
+        <p class="text-muted small mb-0">Jigris</p>
+      </div>
+
+      <!-- Back button -->
+      <a href="movies.html" class="btn btn-sm btn-light rounded-circle">
+        <i class="bi bi-x-lg"></i>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-4" id="movieTabs">
+      <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#synopsis">Synopsis</a></li>
+      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#cast">Cast</a></li>
+      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#posters">Posters</a></li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- Synopsis -->
+      <div class="tab-pane fade show active" id="synopsis">
+        <p class="text-muted">
+          One Last Ride is a hilarious and wild road trip to Goa with no money, no phones, and no GPS. This journey is filled with chaotic fun as four friends with different personalities embark on an impossible trip to fulfil a final wish. Their car, a character in itself, gives them trouble like never before, leading to unforgettable memories and the uncovering of one shocking truth.
+        </p>
+
+        <div class="movie-meta mb-4">
+          <p><i class="bi bi-person-badge"></i> UA16+</p>
+          <p><i class="bi bi-translate"></i> Telugu</p>
+          <p><i class="bi bi-film"></i> Comedy</p>
+        </div>
+      </div>
+
+      <!-- Cast -->
+      <div class="tab-pane fade" id="cast">
+        <div class="d-flex gap-4 flex-wrap">
+          <div class="text-center">
+            <img src="https://cdn.district.in/movies-assets/images/cinema/Krishna%20Br-afdc1840-e410-11ed-82e8-cf24b6293ec4.jpg?format=webp" class="cast-img rounded-circle">
+            <p class="mt-2 small">Krishna Burugula</p>
+          </div>
+          <div class="text-center">
+            <img src="https://cdn.district.in/movies-assets/images/cinema/ram-a12b2e10-60db-11ee-85f3-1f507fecf98f.jpg?format=webp" class="cast-img rounded-circle">
+            <p class="mt-2 small">Ram Nithin</p>
+          </div>
+          <div class="text-center">
+            <img src="https://cdn.district.in/movies-assets/images/cinema/dheeraj%20Atg-32b2ca10-819a-11f0-88b8-09f6198b2002.jpg?format=webp" class="cast-img rounded-circle">
+            <p class="mt-2 small">Dheeraj Athreya</p>
+          </div>
+          <div class="text-center">
+            <img src="https://cdn.district.in/movies-assets/images/cinema/463946521_18331246825199271_4297-6a26f4d0-819a-11f0-b576-d91f61622181.jpg?format=webp" class="cast-img rounded-circle">
+            <p class="mt-2 small">Mani Vaka</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Posters -->
+      <div class="tab-pane fade" id="posters">
+        <img src="https://cdn.district.in/movies-assets/images/cinema/Jigris_Gallery-4bad66c0-8199-11f0-973b-7148efd1e9d5.jpg" class="w-100 rounded-4 shadow-sm">
+      </div>
+    </div>
+  </div>
+  
+  <div class="text-center mt-4">
+  <a href="ticket.html" class="book-btn" >Book tickets</a>
+</div>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

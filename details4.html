@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowTimeGo</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="details.css">
+  <link rel="icon" href="logo.jpeg">
+</head>
+<body>
+  <div class="container my-5 movie-details p-4 shadow-sm rounded-4 bg-white">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <h5 class="fw-semibold mb-0">Movie details</h5>
+        <p class="text-muted small mb-0">Predator: Badlands</p>
+      </div>
+      <!-- Back button -->
+      <a href="movies.html" class="btn btn-sm btn-light rounded-circle">
+        <i class="bi bi-x-lg"></i>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-4" id="movieTabs">
+      <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#synopsis">Synopsis</a></li>
+      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#cast">Cast</a></li>
+      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#posters">Posters</a></li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- Synopsis -->
+      <div class="tab-pane fade show active" id="synopsis">
+        <p class="text-muted">
+         Kaantha is a period drama set in 1950s Madras, directed by Selvamani Selvaraj. Featuring Dulquer Salmaan, Samuthirakani, and Bhagyashri Borse, the film brings a pan-Indian cinematic experience to life.
+        </p>
+
+        <div class="movie-meta mb-4">
+          <p><i class="bi bi-person-badge"></i> UA16+</p>
+          <p><i class="bi bi-translate"></i> English, Hindi, Telugu, Tamil</p>
+          <p><i class="bi bi-film"></i> Action, Sci-Fi, Thriller</p>
+        </div>
+      </div>
+
+      <!-- Cast -->
+      <div class="tab-pane fade" id="cast">
+        <div class="d-flex gap-4 flex-wrap">
+          <div class="text-center">
+            <img src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/elle-fanning-4456-24-09-2019-01-22-07.jpg" class="cast-img rounded-circle">
+            <p class="mt-2 small">Elle Fanning</p>
+          </div>
+          <div class="text-center">
+            <img src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/dimitrius-schuster-koloamatangi-2046971-1745818987.jpg" class="cast-img rounded-circle">
+            <p class="mt-2 small"> Dimitrius Schuster-Koloamatangi</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Posters -->
+      <div class="tab-pane fade" id="posters">
+        <img src="https://cdn.district.in/movies-assets/images/cinema/Gallery%20Predator--Badlands%20(1)-f78dda50-21c8-11f0-a524-07b7a1c242ef.jpg" class="w-100 rounded-4 shadow-sm">
+      </div>
+    </div>
+  </div>
+  
+  <div class="text-center mt-4">
+  <a href="ticket.html" class="book-btn" >Book tickets</a>
+</div>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

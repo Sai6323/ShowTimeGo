@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShowTimeGo</title>
+    <link rel="icon" href="logo.jpeg">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .ticket-box {
+            background: white;
+            border-radius: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Poster */
+        .poster-img {
+            width: 75px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* QR */
+        .qr-img {
+            width: 150px;
+            height: 150px;
+        }
+
+        /* Notches */
+        .notch {
+            width: 26px;
+            height: 26px;
+            background: #f8f9fa;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .left-notch {
+            top: 95px;
+            left: -13px;
+        }
+
+        .right-notch {
+            top: 95px;
+            right: -13px;
+        }
+
+        .bottom-left-notch {
+            bottom: 95px;
+            left: -13px;
+        }
+
+        .bottom-right-notch {
+            bottom: 95px;
+            right: -13px;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <div class="container my-4">
+
+        <!-- TICKET WRAPPER -->
+        <div class="ticket-box shadow">
+
+            <!-- TOP NOTCHES -->
+            <div class="notch left-notch"></div>
+            <div class="notch right-notch"></div>
+
+            <!-- Movie section -->
+            <div class="p-3 d-flex">
+
+                <!-- Poster -->
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXKKTdWTWRYSezoZQWQN_OKacp0HRQes9AiA&s"
+                    class="poster-img" alt="Movie Poster">
+
+                <!-- Info -->
+                <div class="ms-3">
+                    <h5 class="fw-bold">The Girlfriend</h5>
+                    <p class="small mb-1 text-muted">Telugu, 2D</p>
+                    <p class="small mb-1 text-muted">Tue, 29 Jul | 10:30 AM</p>
+                    <p class="small mb-0 text-muted">INOX: Hiland Park</p>
+                </div>
+
+                <div class="ms-auto text-muted fw-semibold small mt-2">M-Ticket</div>
+            </div>
+
+            <!-- Toggle details -->
+            <div class="bg-light py-2 text-center small text-muted border-top border-bottom">
+                Tap to hide details
+            </div>
+
+            <!-- Ticket Details -->
+            <div class="text-center py-3">
+                <p class="small mb-0">1 Ticket(s)</p>
+                <h5 class="fw-bold mb-0">SCREEN 1</h5>
+                <p class="small text-muted">SL-B12</p>
+
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
+                    class="qr-img my-3" alt="QR Code">
+
+                <p class="fw-bold small">BOOKING ID: TZASAH3</p>
+
+                <div class="bg-light py-2 px-3 small text-muted">
+                    Cancellation unavailable : cut-off time of 20 minutes before showtime has passed
+                </div>
+            </div>
+
+            <!-- Support -->
+            <div class="text-center py-3">
+                <div class="text-muted fs-4 mb-1">📞</div>
+                <p class="small text-muted mb-0">Contact<br>support</p>
+            </div>
+
+            <!-- Separator -->
+            <hr class="m-0">
+
+            <!-- Amount Section -->
+            <div class="p-3">
+
+                <div class="d-flex justify-content-between fw-semibold mb-2">
+                    <span>Total Amount</span>
+                    <span>₹ 408.28</span>
+                </div>
+
+                <div class="d-flex justify-content-between small text-muted">
+                    <span>Ticket(s) price (1)</span>
+                    <span>₹354.00</span>
+                </div>
+
+                <div class="d-flex justify-content-between small text-muted">
+                    <span>Convenience fee</span>
+                    <span>₹54.28</span>
+                </div>
+
+                <div class="d-flex justify-content-between small text-muted">
+                    <span>Discount</span>
+                    <span>₹ 0.00</span>
+                </div>
+
+            </div>
+
+            <!-- BOTTOM NOTCHES -->
+            <div class="notch bottom-left-notch"></div>
+            <div class="notch bottom-right-notch"></div>
+        </div>
+    </div>
+</body>
+
+</html>

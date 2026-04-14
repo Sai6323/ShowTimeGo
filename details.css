@@ -1,0 +1,47 @@
+body {
+  background-color: #f8f9fa;
+  font-family: 'Inter', sans-serif;
+}
+
+.movie-details {
+  max-width: 700px;
+  background: #fff;
+}
+
+.nav-tabs .nav-link {
+  color: #555;
+  font-weight: 500;
+  border: none;
+}
+
+.nav-tabs .nav-link.active {
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+
+.movie-meta p {
+  margin-bottom: 0.4rem;
+  color: #666;
+}
+
+.cast-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.book-btn {
+  background-color: #e73b4b;  /* Same pinkish-red color */
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.book-btn:hover {
+  background-color: #cf3442;
+}

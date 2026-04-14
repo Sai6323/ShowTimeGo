@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions Modal</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .modal-content {
+    border-radius: 20px !important;
+    padding: 20px;
+}
+
+.terms-list {
+    line-height: 1.7;
+    font-size: 15px;
+    color: #444;
+    padding-left: 18px;
+}
+
+.modal-scroll {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Scrollbar beautification */
+.modal-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+    background: #d60808;
+    border-radius: 10px;
+}
+    </style>
+</head>
+<body class="bg-light">
+
+<!-- Button to Open Modal (for testing) -->
+
+<div class="text-center mt-5">
+    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#termsModal">
+        Open Terms & Conditions
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3 rounded-4">
+
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Terms & Conditions</h5>
+      </div>
+
+      <div class="modal-body modal-scroll">
+        <ol class="terms-list">
+            <li>Patrons must comply with the film censor certification and age guidelines.</li>
+            <li>Ticket is compulsory for children aged 3 years & above.</li>
+            <li>Outside food & beverages are not allowed inside the cinema.</li>
+            <li>No knives, cameras, helmets, lighters, cigarettes, or inflammable items.</li>
+            <li>Patrons under the influence of alcohol or drugs are not allowed.</li>
+            <li>Seat layout shown is only for representation; layout may vary.</li>
+            <li>Tickets once purchased cannot be refunded or exchanged.</li>
+            <li>3D Glasses price is included in ticket price (if applicable).</li>
+        </ol>
+      </div>
+
+      <div class="modal-footer border-0 d-flex justify-content-between">
+        <button class="btn btn-outline-danger px-4 py-2"><a href="seat.html"> Cancel</a></button>
+        <button class="btn btn-danger px-4 py-2"><a href="payment.html">Accept</a></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

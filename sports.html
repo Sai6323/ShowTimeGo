@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sports in Vijayawada – ShowTimeGo</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!--  Favicon -->
+  <link rel="icon" href="logo.jpeg" />
+  <style>
+    /* ============ GLOBAL ============ */
+    body {
+      background-color: #f2f4f7;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Arial, sans-serif;
+    }
+
+    .page-bg {
+      background-color: #f2f4f7;
+    }
+
+    .x-small {
+      font-size: 0.75rem;
+    }
+
+    /* ============ NAVBAR ============ */
+   .navbar {
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #e5002a;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #000 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #e5002a !important;
+}
+
+    /* ============ CATEGORY BAR ============ */
+    .category-link {
+      text-decoration: none;
+      color: #555;
+    }
+
+    .category-link:hover {
+      color: #e71a0f;
+    }
+
+    .category-link.active {
+      color: #e71a0f;
+      font-weight: 600;
+    }
+
+    /* ============ FILTERS ============ */
+    .filter-box {
+      background: #fff;
+      border: 1px solid #eee;
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 18px;
+    }
+
+    /* Filter Title Row */
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .filter-title {
+      color: #c62828;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .clear-text {
+      color: #c62828;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* Buttons inside filters */
+    .filter-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: #fff;
+      color: #c62828;
+      border: 1px solid #c62828;
+      font-size: 14px;
+      margin: 4px 6px 4px 0;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .filter-btn:hover {
+      background: #ffe5e7;
+    }
+
+    /* Checkbox row */
+    .filter-checkbox {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .filter-checkbox label {
+      margin-left: 6px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    /* Browse Button */
+    .browse-btn {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      border-radius: 6px;
+      border: 1px solid #c62828;
+      background: #fff;
+      color: #c62828;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .browse-btn:hover {
+      background: #ffe5e7;
+    }
+
+    /* ============ TAG PILLS ============ */
+    .tag-pill {
+      border-radius: 20px;
+      border: 1px solid #d3d4dd;
+      background-color: #fff;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .tag-pill.active {
+      border-color: #e71a0f;
+      background-color: #ffe6e6;
+      color: #e71a0f;
+    }
+
+    /* ============ EVENT CARDS ============ */
+    .event-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 6px;
+      border: 1px solid #e4e6eb;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      height: 100%;
+    }
+
+    .event-card:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .event-img {
+      width: 100%;
+      height: 260px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .date-badge {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      background-color: #000;
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* ============ INFO SECTION ============ */
+    .content-section {
+      background-color: #f7f8fa;
+    }
+
+    .content-section p {
+      max-width: 900px;
+    }
+
+    /* ============ FOOTER ============ */
+    .footer-top {
+      background-color: #2b2c35;
+      color: #fff;
+    }
+
+    .footer-icons {
+      background-color: #31323d;
+    }
+
+    .footer-big-icon {
+      font-size: 2rem;
+    }
+
+    .footer-links {
+      background-color: #1f2026;
+      color: #bfc3c9;
+    }
+
+    .footer-links h6 {
+      font-size: 0.9rem;
+    }
+
+    .footer-list {
+      color: #8e96a0;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-icon {
+      font-size: 1.8rem;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .search-form {
+        width: 100%;
+      }
+
+      .event-img {
+        height: 220px;
+      }
+
+      .filter-box {
+        margin-bottom: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+ <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="app.html"><img src="logo.jpeg" width="50px"></a>
+      <form class="d-flex mx-auto" style="width: 50%;">
+        <input class="form-control me-2" type="search"
+          placeholder="Search for Movies, Events, Plays, Sports ">
+      </form>
+      <div class="d-flex align-items-center">
+        <span class="me-3 fw-semibold">Vijayawada</span>
+        <button class="btn btn-danger me-2">Hi! Guest</a></button>
+        <i class="bi bi-list fs-3"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Categories -->
+  <div class="container-fluid bg-light py-2 border-bottom">
+    <div class="d-flex justify-content-center gap-4">
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="plays.html" class="nav-link">Plays</a>
+      <a href="sports.html" class="nav-link">Sports</a>
+    </div>
+  </div>
+  <!-- ================= MAIN CONTENT ================= -->
+  <div class="container-fluid page-bg py-4">
+    <div class="row px-3 px-md-4">
+
+      <!-- ========== LEFT FILTERS ========== -->
+      <aside class="col-12 col-md-3 mb-4 mb-md-0">
+        <h5 class="fw-bold mb-3">Filters</h5>
+
+        <!-- Date Filter -->
+        <div class="filter-box mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-semibold small">Date</span>
+            <button class="btn btn-link btn-sm p-0 small text-danger">Clear</button>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-sm btn-danger">Today</button>
+            <button class="btn btn-sm btn-outline-danger">Tomorrow</button>
+            <button class="btn btn-sm btn-outline-danger">This Weekend</button>
+          </div>
+          <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" id="dateRangeCheck" />
+            <label class="form-check-label small" for="dateRangeCheck">Date Range</label>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="filter-box mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-semibold small">Categories</span>
+            <button class="btn btn-link btn-sm p-0 small text-danger">Clear</button>
+          </div>
+          <div class="small text-muted">
+            <button class="btn btn-sm btn-outline-danger">Marathon</button>
+            <button class="btn btn-sm btn-outline-danger">Chess</button>
+            <button class="btn btn-sm btn-outline-danger">Cricket</button>
+            <button class="btn btn-sm btn-outline-danger">Cycling</button>
+          </div>
+        </div>
+
+        <!-- More Filters -->
+        <div class="filter-box mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-semibold small">More Filters</span>
+            <button class="btn btn-link btn-sm p-0 small text-danger">Clear</button>
+          </div>
+          <div class="small text-muted">
+            <button class="btn btn-sm btn-outline-danger">Outdoor events</button>
+            <button class="btn btn-sm btn-outline-danger">Online events</button>
+            <button class="btn btn-sm btn-outline-danger">Free</button>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="filter-box mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-semibold small">Price</span>
+            <button class="btn btn-link btn-sm p-0 small text-danger">Clear</button>
+          </div>
+          <div class="small text-muted">
+            <button class="btn btn-sm btn-outline-danger">Free</button>
+            <button class="btn btn-sm btn-outline-danger">0-500</button>
+            <button class="btn btn-sm btn-outline-danger">501-2000</button>
+            <button class="btn btn-sm btn-outline-danger">Above 2000</button>
+          </div>
+        </div>
+
+        <button class="btn btn-outline-danger w-100 mt-2">Browse by Venues</button>
+      </aside>
+
+      <!-- ========== RIGHT CONTENT ========== -->
+      <main class="col-12 col-md-9">
+
+        <!-- Heading row -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+          <h4 class="fw-bold mb-0">Sports in Vijayawada</h4>
+          <div class="d-flex align-items-center gap-2 small text-muted mt-2 mt-md-0">
+            <span>Within 50 km</span>
+            <span class="vr d-none d-md-inline"></span>
+            <select class="form-select form-select-sm sort-select">
+              <option value="popularity">Sort by: Popularity</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="date">Date</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tag filters -->
+        <div class="d-flex flex-wrap gap-2 mb-3 small">
+          <button class="tag-pill active">Clear All</button>
+          <button class="tag-pill">Today</button>
+          <button class="tag-pill">Tomorrow</button>
+          <button class="tag-pill">This Weekend</button>
+          <button class="tag-pill">This Week</button>
+          <button class="tag-pill">This Month</button>
+        </div>
+
+        <!-- Event cards grid -->
+        <div class="row g-3 g-sm-4">
+
+          <!-- Card 1 -->
+          <div class="col-6 col-sm-4 col-lg-3">
+            <article class="event-card">
+              <div class="position-relative">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAyMyBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00448929-wegezbnbgy-portrait.jpg"
+                  class="event-img" alt="Chess Championship Online" />
+                <span class="date-badge">Sun, 23 Nov onwards</span>
+              </div>
+              <h6 class="mt-2 fw-semibold small">
+                Chess Championship (Online) For All Age
+              </h6>
+              <p class="mb-0 text-muted x-small">
+                Your Place and Your Time
+              </p>
+              <p class="mb-0 text-muted x-small">Chess • Online</p>
+              <p class="fw-semibold small mt-1">₹ 249</p>
+            </article>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-6 col-sm-4 col-lg-3">
+            <article class="event-card">
+              <div class="position-relative">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00462511-thpxmcbxtu-portrait.jpg"
+                  class="event-img" alt="Hope 5 KM Run" />
+                <span class="date-badge">Sun, 16 Nov onwards</span>
+              </div>
+              <h6 class="mt-2 fw-semibold small">
+                Hope 5 KM Run – Get Medal by Courier
+              </h6>
+              <p class="mb-0 text-muted x-small">
+                Your Place and Your Time
+              </p>
+              <p class="mb-0 text-muted x-small">Running • 5k</p>
+              <p class="fw-semibold small mt-1">₹ 444</p>
+            </article>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-6 col-sm-4 col-lg-3">
+            <article class="event-card">
+              <div class="position-relative">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-RnJpLCA1IERlYyBvbndhcmRz,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00469550-regpnmhjmt-portrait.jpg"
+                  class="event-img" alt="Valley Run" />
+                <span class="date-badge">Fri, 5 Dec onwards</span>
+              </div>
+              <h6 class="mt-2 fw-semibold small">
+                Valley Run Winter Edition 2025
+              </h6>
+              <p class="mb-0 text-muted x-small">
+                Aamby Valley City Air Strip
+              </p>
+              <p class="mb-0 text-muted x-small">Motorsports • Drag Racing</p>
+              <p class="fw-semibold small mt-1">₹ 1500 onwards</p>
+            </article>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-6 col-sm-4 col-lg-3">
+            <article class="event-card">
+              <div class="position-relative">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAyMyBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00461518-hcbsxkynsb-portrait.jpg"
+                  class="event-img" alt="Spartan Fitness Marathon" />
+                <span class="date-badge">Sun, 23 Nov onwards</span>
+              </div>
+              <h6 class="mt-2 fw-semibold small">
+                Spartan Fitness Marathon
+              </h6>
+              <p class="mb-0 text-muted x-small">
+                Your Place and Your Time
+              </p>
+              <p class="mb-0 text-muted x-small">Running • 5k</p>
+              <p class="fw-semibold small mt-1">₹ 435</p>
+            </article>
+          </div>
+
+          <div class="row g-4 mt-3">
+
+            <!-- Card 1 -->
+            <div class="col-md-3">
+              <div class="event-card p-2">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyMiBOb3Y%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00463162-dsetprdhvv-portrait.jpg"
+                  class="event-img">
+
+                <span class="event-date">Sat, 22 Nov</span>
+
+                <div class="event-title">Math Olympiad Preparation</div>
+                <div class="event-location">Your Place and Your Time</div>
+                <div class="event-category">Chess</div>
+                <div class="event-price">₹ 151</div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-3">
+              <div class="event-card p-2">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00466104-jyvgtumgur-portrait.jpg"
+                  class="event-img">
+
+                <span class="event-date">Sun, 16 Nov onwards</span>
+
+                <div class="event-title">Chess Championship (Online) For All Age</div>
+                <div class="event-location">Your Place and Your Time</div>
+                <div class="event-category">Chess</div>
+                <div class="event-price">₹ 249</div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-3">
+              <div class="event-card p-2">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAyMyBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00461521-qusqznebsv-portrait.jpg"
+                  class="event-img">
+
+                <span class="event-date">Sun, 23 Nov onwards</span>
+
+                <div class="event-title">Run for Shri Ram Marathon - Get Beautiful…</div>
+                <div class="event-location">Your Place and Your Time</div>
+                <div class="event-category">5k</div>
+                <div class="event-price">₹ 444</div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-3">
+              <div class="event-card p-2">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAyMyBOb3Y%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00443867-wvrupbnxkz-portrait.jpg"
+                  class="event-img">
+
+                <span class="event-date">Sun, 23 Nov</span>
+
+                <div class="event-title">Chess Championship (Online)-Kids Special</div>
+                <div class="event-location">Your Place and Your Time</div>
+                <div class="event-category">Chess</div>
+                <div class="event-price">₹ 249 onwards</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Add more cards similarly... -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ================= INFO SECTION ================= -->
+  <section class="content-section py-4">
+    <div class="container px-4">
+      <nav class="breadcrumb small mb-2">
+        <a href="#" class="breadcrumb-item">Home</a>
+        <a href="#" class="breadcrumb-item">Sports</a>
+        <span class="breadcrumb-item active">Vijayawada</span>
+      </nav>
+
+      <h5 class="fw-bold mb-3">
+        Obtain Information About All Upcoming Sports Events in Vijayawada
+      </h5>
+
+      <p class="small text-muted">
+        Stay updated about marathons, chess tournaments, cycling events, fitness
+        runs and more happening in and around Vijayawada. You can browse by
+        date, category, venue or price to find the perfect event to participate in
+        or attend with your friends and family.
+      </p>
+
+      <p class="small text-muted">
+        Book tickets online, discover virtual and on-ground events, and keep
+        track of your favourite sports activities with ShowTimeGo.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="mt-0">
+
+    <!-- Top CTA -->
+    <div class="footer-top d-flex flex-column flex-md-row justify-content-between align-items-center px-4 py-3">
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-2 text-white small">
+        <span class="footer-icon">📢</span>
+        <span class="fw-semibold">List your show</span>
+        <span>Got a show, event, activity or a great experience? Partner with us &amp; get listed on ShowTimeGo.</span>
+      </div>
+      <button class="btn btn-danger btn-sm mt-3 mt-md-0 px-4">Contact today!</button>
+    </div>
+
+    <!-- Middle icons -->
+    <div class="footer-icons px-4 py-4">
+      <div class="row text-center text-white small">
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="footer-big-icon">👤</div>
+          <p class="mt-2 mb-0">24/7 CUSTOMER CARE</p>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="footer-big-icon">🎟️</div>
+          <p class="mt-2 mb-0">RESEND BOOKING CONFIRMATION</p>
+        </div>
+        <div class="col-md-4">
+          <div class="footer-big-icon">✉️</div>
+          <p class="mt-2 mb-0">SUBSCRIBE TO THE NEWSLETTER</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="footer-links px-4 py-4 small">
+      <h6 class="fw-semibold mt-2">SPORTS EVENTS IN TOP CITIES</h6>
+      <p class="footer-list">
+        Mumbai | Delhi-NCR | Chennai | Bengaluru | Hyderabad | Pune | Ahmedabad | Kolkata | Kochi
+      </p>
+
+      <h6 class="fw-semibold mt-3">SPORTS EVENTS IN VIJAYAWADA</h6>
+      <p class="footer-list">
+        Marathons | Chess Tournaments | Fitness Runs | Cricket Matches | Cycling | Virtual Events
+      </p>
+
+      <h6 class="fw-semibold mt-3">HELP</h6>
+      <p class="footer-list">
+        About Us | Contact Us | Terms &amp; Conditions | Privacy Policy | FAQs
+      </p>
+
+      <div class="text-center text-muted mt-4">
+        <small>© 2025 ShowTimeGo. All Rights Reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

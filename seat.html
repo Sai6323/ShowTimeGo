@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowTimeGo</title>
+
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #fafafa;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 8px 24px;
+    }
+
+    .movie-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .sub-info {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .profile-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #999;
+      font-size: 18px;
+    }
+
+    /* ===== DATE & TIME BUTTONS ===== */
+    .date-label {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .showtime-btn {
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      background: #fff;
+      padding: 6px 18px;
+      font-size: 13px;
+      margin: 0 4px;
+    }
+
+    .showtime-btn.active {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+
+    /* ===== SEAT LAYOUT ===== */
+    .section-title {
+      text-align: center;
+      margin-top: 25px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .seat-area {
+      max-width: 950px;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+
+    .seat-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 4px 0;
+      gap: 6px;
+    }
+
+    .row-letter {
+      width: 20px;
+      text-align: right;
+      margin-right: 10px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .seat-group {
+      display: flex;
+      gap: 4px;
+      flex-wrap: nowrap;
+    }
+
+    .seat-gap {
+      width: 40px;
+    }
+
+    /* Seat checkbox hidden */
+    .seat-input {
+      display: none;
+    }
+
+    .seat-label {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      border: 1px solid #b0b0b0;
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: #fff;
+      transition: 0.15s;
+    }
+
+    .seat-label:hover {
+      background: #f0f0f0;
+    }
+
+    /* Selected seat (purple) */
+    .seat-input:checked+.seat-label {
+      background: #6a5be8;
+      color: #fff;
+      border-color: #6a5be8;
+    }
+
+    /* Occupied seat like “X” */
+    .seat-label.occupied {
+      background: #eee;
+      border-color: #ddd;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+
+    /* ===== SCREEN ===== */
+    .screen-wrap {
+      max-width: 600px;
+      margin: 40px auto 5px;
+    }
+
+    .screen-bar {
+      height: 38px;
+      border-radius: 70% 70% 10px 10px;
+      background: linear-gradient(to bottom, #cbb8ff, #9b7cff);
+    }
+
+    .screen-text {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      color: #777;
+    }
+
+    /* ===== LEGEND ===== */
+    .legend {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 40px;
+      font-size: 11px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 10px;
+      gap: 5px;
+    }
+
+    .legend-box {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid #999;
+    }
+
+    .legend-occupied {
+      background: #ccc;
+      border-color: #ccc;
+    }
+
+    .legend-selected {
+      background: #6a5be8;
+      border-color: #6a5be8;
+    }
+
+    .proceed-btn {
+      background: #111217;
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 12px 40px;
+      border-radius: 35px;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .proceed-btn:hover {
+      background: #000;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TOP BAR -->
+  <div class="top-bar d-flex justify-content-between align-items-center">
+    <!-- Left: logo -->
+    <div class="d-flex align-items-center">
+      <a href='app.html'><img src="logo.jpeg" alt="Logo" style="width: 120px" /></a>
+    </div>
+
+    <!-- Middle: movie name + sub text -->
+    <div class="text-center">
+      <div class="movie-title">The Girlfriend</div>
+      <div class="sub-info">
+        16 Nov, 09:30 PM at Sangeeswara Cinemas, Chenchupet, Tenali
+      </div>
+    </div>
+
+    <!-- Right: profile circle -->
+    <div class="profile-circle">
+      <span>👤</span>
+    </div>
+  </div>
+
+  <!-- DATE + TIME -->
+  <div class="container mt-3">
+    <div class="d-flex flex-column align-items-center">
+      <span class="date-label">Sun • 16 Nov</span>
+      <div class="mt-2">
+        <button class="showtime-btn">06:30 PM</button>
+        <button class="showtime-btn active">09:30 PM</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOLD SECTION -->
+  <div class="section-title">GOLD : ₹150</div>
+
+  <div class="seat-area">
+    <!-- Row A (left block 1–8, right block 9–17; some X as occupied) -->
+    <div class="seat-row">
+      <div class="row-letter">A</div>
+
+      <!-- Left block -->
+      <div class="seat-group">
+        <input type="checkbox" id="A1" class="seat-input" />
+        <label for="A1" class="seat-label">1</label>
+
+        <input type="checkbox" id="A2" class="seat-input" />
+        <label for="A2" class="seat-label">2</label>
+
+        <input type="checkbox" id="A3" class="seat-input" />
+        <label for="A3" class="seat-label">3</label>
+
+        <input type="checkbox" id="A4" class="seat-input" />
+        <label for="A4" class="seat-label">4</label>
+
+        <!-- occupied examples -->
+        <input type="checkbox" disabled class="seat-input" />
+        <label class="seat-label occupied">X</label>
+
+        <input type="checkbox" disabled class="seat-input" />
+        <label class="seat-label occupied">X</label>
+
+        <input type="checkbox" id="A7" class="seat-input" />
+        <label for="A7" class="seat-label">7</label>
+
+        <input type="checkbox" id="A8" class="seat-input" />
+        <label for="A8" class="seat-label">8</label>
+      </div>
+
+      <div class="seat-gap"></div>
+
+      <!-- Right block -->
+      <div class="seat-group">
+        <input type="checkbox" id="A9" class="seat-input" />
+        <label for="A9" class="seat-label">9</label>
+
+        <input type="checkbox" id="A10" class="seat-input" />
+        <label for="A10" class="seat-label">10</label>
+
+        <input type="checkbox" id="A11" class="seat-input" />
+        <label for="A11" class="seat-label">11</label>
+
+        <input type="checkbox" id="A12" class="seat-input" />
+        <label for="A12" class="seat-label">12</label>
+
+        <input type="checkbox" id="A13" class="seat-input" />
+        <label for="A13" class="seat-label">13</label>
+
+        <input type="checkbox" id="A14" class="seat-input" />
+        <label for="A14" class="seat-label">14</label>
+
+        <input type="checkbox" id="A15" class="seat-input" />
+        <label for="A15" class="seat-label">15</label>
+
+        <input type="checkbox" id="A16" class="seat-input" />
+        <label for="A16" class="seat-label">16</label>
+
+        <input type="checkbox" id="A17" class="seat-input" />
+        <label for="A17" class="seat-label">17</label>
+      </div>
+    </div>
+
+    <!-- Row B -->
+    <div class="seat-row">
+      <div class="row-letter">B</div>
+      <div class="seat-group">
+        <input type="checkbox" id="B1" class="seat-input" />
+        <label for="B1" class="seat-label">1</label>
+
+        <input type="checkbox" id="B2" class="seat-input" />
+        <label for="B2" class="seat-label">2</label>
+
+        <input type="checkbox" id="B3" class="seat-input" />
+        <label for="B3" class="seat-label">3</label>
+
+        <input type="checkbox" id="B4" class="seat-input" />
+        <label for="B4" class="seat-label">4</label>
+
+        <input type="checkbox" id="B5" class="seat-input" />
+        <label for="B5" class="seat-label">5</label>
+
+        <input type="checkbox" id="B6" class="seat-input" />
+        <label for="B6" class="seat-label">6</label>
+
+        <input type="checkbox" id="B7" class="seat-input" />
+        <label for="B7" class="seat-label">7</label>
+
+        <input type="checkbox" id="B8" class="seat-input" />
+        <label for="B8" class="seat-label">8</label>
+      </div>
+
+      <div class="seat-gap"></div>
+
+      <div class="seat-group">
+        <input type="checkbox" id="B9" class="seat-input" />
+        <label for="B9" class="seat-label">9</label>
+
+        <input type="checkbox" id="B10" class="seat-input" />
+        <label for="B10" class="seat-label">10</label>
+
+        <input type="checkbox" id="B11" class="seat-input" />
+        <label for="B11" class="seat-label">11</label>
+
+        <input type="checkbox" id="B12" class="seat-input" />
+        <label for="B12" class="seat-label">12</label>
+
+        <input type="checkbox" id="B13" class="seat-input" />
+        <label for="B13" class="seat-label">13</label>
+
+        <input type="checkbox" id="B14" class="seat-input" />
+        <label for="B14" class="seat-label">14</label>
+
+        <input type="checkbox" id="B15" class="seat-input" />
+        <label for="B15" class="seat-label">15</label>
+
+        <input type="checkbox" id="B16" class="seat-input" />
+        <label for="B16" class="seat-label">16</label>
+
+        <input type="checkbox" id="B17" class="seat-input" />
+        <label for="B17" class="seat-label">17</label>
+      </div>
+    </div>
+
+    <!-- Row C (pattern - copy for D, E, ... L) -->
+    <div class="seat-row">
+      <div class="row-letter">C</div>
+      <div class="seat-group">
+        <input type="checkbox" id="C1" class="seat-input" />
+        <label for="C1" class="seat-label">1</label>
+        <input type="checkbox" id="C2" class="seat-input" />
+        <label for="C2" class="seat-label">2</label>
+        <input type="checkbox" id="C3" class="seat-input" />
+        <label for="C3" class="seat-label">3</label>
+        <input type="checkbox" id="C4" class="seat-input" />
+        <label for="C4" class="seat-label">4</label>
+        <input type="checkbox" id="C5" class="seat-input" />
+        <label for="C5" class="seat-label">5</label>
+        <input type="checkbox" id="C6" class="seat-input" />
+        <label for="C6" class="seat-label">6</label>
+        <input type="checkbox" id="C7" class="seat-input" />
+        <label for="C7" class="seat-label">7</label>
+        <input type="checkbox" id="C8" class="seat-input" />
+        <label for="C8" class="seat-label">8</label>
+      </div>
+
+      <div class="seat-gap"></div>
+
+      <div class="seat-group">
+        <input type="checkbox" id="C9" class="seat-input" />
+        <label for="C9" class="seat-label">9</label>
+        <input type="checkbox" id="C10" class="seat-input" />
+        <label for="C10" class="seat-label">10</label>
+        <input type="checkbox" id="C11" class="seat-input" />
+        <label for="C11" class="seat-label">11</label>
+        <input type="checkbox" id="C12" class="seat-input" />
+        <label for="C12" class="seat-label">12</label>
+        <input type="checkbox" id="C13" class="seat-input" />
+        <label for="C13" class="seat-label">13</label>
+        <input type="checkbox" id="C14" class="seat-input" />
+        <label for="C14" class="seat-label">14</label>
+        <input type="checkbox" id="C15" class="seat-input" />
+        <label for="C15" class="seat-label">15</label>
+        <input type="checkbox" id="C16" class="seat-input" />
+        <label for="C16" class="seat-label">16</label>
+        <input type="checkbox" id="C17" class="seat-input" />
+        <label for="C17" class="seat-label">17</label>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SILVER SECTION -->
+  <div class="section-title mt-4">SILVER : ₹100</div>
+
+  <div class="seat-area">
+    <!-- Row M (Silver, usually more seats e.g. 1–19) -->
+    <div class="seat-row">
+      <div class="row-letter">M</div>
+      <div class="seat-group">
+        <input type="checkbox" id="M1" class="seat-input" />
+        <label for="M1" class="seat-label">1</label>
+        <input type="checkbox" id="M2" class="seat-input" />
+        <label for="M2" class="seat-label">2</label>
+        <input type="checkbox" id="M3" class="seat-input" />
+        <label for="M3" class="seat-label">3</label>
+        <input type="checkbox" id="M4" class="seat-input" />
+        <label for="M4" class="seat-label">4</label>
+        <input type="checkbox" id="M5" class="seat-input" />
+        <label for="M5" class="seat-label">5</label>
+        <input type="checkbox" id="M6" class="seat-input" />
+        <label for="M6" class="seat-label">6</label>
+        <input type="checkbox" id="M7" class="seat-input" />
+        <label for="M7" class="seat-label">7</label>
+        <input type="checkbox" id="M8" class="seat-input" />
+        <label for="M8" class="seat-label">8</label>
+        <input type="checkbox" id="M9" class="seat-input" />
+        <label for="M9" class="seat-label">9</label>
+      </div>
+
+      <div class="seat-gap"></div>
+
+      <div class="seat-group">
+        <input type="checkbox" id="M10" class="seat-input" />
+        <label for="M10" class="seat-label">10</label>
+        <input type="checkbox" id="M11" class="seat-input" />
+        <label for="M11" class="seat-label">11</label>
+        <input type="checkbox" id="M12" class="seat-input" />
+        <label for="M12" class="seat-label">12</label>
+        <input type="checkbox" id="M13" class="seat-input" />
+        <label for="M13" class="seat-label">13</label>
+        <input type="checkbox" id="M14" class="seat-input" />
+        <label for="M14" class="seat-label">14</label>
+        <input type="checkbox" id="M15" class="seat-input" />
+        <label for="M15" class="seat-label">15</label>
+        <input type="checkbox" id="M16" class="seat-input" />
+        <label for="M16" class="seat-label">16</label>
+        <input type="checkbox" id="M17" class="seat-input" />
+        <label for="M17" class="seat-label">17</label>
+        <input type="checkbox" id="M18" class="seat-input" />
+        <label for="M18" class="seat-label">18</label>
+        <input type="checkbox" id="M19" class="seat-input" />
+        <label for="M19" class="seat-label">19</label>
+      </div>
+    </div>
+
+    <!-- Row N (copy for O) -->
+    <div class="seat-row">
+      <div class="row-letter">N</div>
+      <div class="seat-group">
+        <input type="checkbox" id="N1" class="seat-input" />
+        <label for="N1" class="seat-label">1</label>
+        <input type="checkbox" id="N2" class="seat-input" />
+        <label for="N2" class="seat-label">2</label>
+        <input type="checkbox" id="N3" class="seat-input" />
+        <label for="N3" class="seat-label">3</label>
+        <input type="checkbox" id="N4" class="seat-input" />
+        <label for="N4" class="seat-label">4</label>
+        <input type="checkbox" id="N5" class="seat-input" />
+        <label for="N5" class="seat-label">5</label>
+        <input type="checkbox" id="N6" class="seat-input" />
+        <label for="N6" class="seat-label">6</label>
+        <input type="checkbox" id="N7" class="seat-input" />
+        <label for="N7" class="seat-label">7</label>
+        <input type="checkbox" id="N8" class="seat-input" />
+        <label for="N8" class="seat-label">8</label>
+        <input type="checkbox" id="N9" class="seat-input" />
+        <label for="N9" class="seat-label">9</label>
+      </div>
+
+      <div class="seat-gap"></div>
+
+      <div class="seat-group">
+        <input type="checkbox" id="N10" class="seat-input" />
+        <label for="N10" class="seat-label">10</label>
+        <input type="checkbox" id="N11" class="seat-input" />
+        <label for="N11" class="seat-label">11</label>
+        <input type="checkbox" id="N12" class="seat-input" />
+        <label for="N12" class="seat-label">12</label>
+        <input type="checkbox" id="N13" class="seat-input" />
+        <label for="N13" class="seat-label">13</label>
+        <input type="checkbox" id="N14" class="seat-input" />
+        <label for="N14" class="seat-label">14</label>
+        <input type="checkbox" id="N15" class="seat-input" />
+        <label for="N15" class="seat-label">15</label>
+        <input type="checkbox" id="N16" class="seat-input" />
+        <label for="N16" class="seat-label">16</label>
+        <input type="checkbox" id="N17" class="seat-input" />
+        <label for="N17" class="seat-label">17</label>
+        <input type="checkbox" id="N18" class="seat-input" />
+        <label for="N18" class="seat-label">18</label>
+        <input type="checkbox" id="N19" class="seat-input" />
+        <label for="N19" class="seat-label">19</label>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCREEN -->
+  <div class="screen-wrap">
+    <div class="screen-bar"></div>
+    <div class="screen-text">SCREEN THIS WAY</div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-box"></div> <span>Available</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-box legend-occupied"></div> <span>Occupied</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-box legend-selected"></div> <span>Selected</span>
+    </div>
+    <a class="proceed-btn" data-bs-toggle="modal" data-bs-target="#termsModal">
+      Select Seats
+    </a>
+  </div>
+  <!-- TERMS & CONDITIONS MODAL -->
+<div class="modal fade" id="termsModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3 rounded-4">
+
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Terms & Conditions</h5>
+      </div>
+
+      <div class="modal-body modal-scroll">
+        <ol class="terms-list">
+            <li>Patrons must comply with the film censor certification and age guidelines.</li>
+            <li>Ticket is compulsory for children aged 3 years & above.</li>
+            <li>Outside food & beverages are not allowed inside the cinema.</li>
+            <li>No knives, cameras, helmets, lighters, cigarettes, or inflammable items.</li>
+            <li>Patrons under the influence of alcohol or drugs are not allowed.</li>
+            <li>Seat layout shown is only for representation; layout may vary.</li>
+            <li>Tickets once purchased cannot be refunded or exchanged.</li>
+            <li>3D Glasses price is included in ticket price (if applicable).</li>
+        </ol>
+      </div>
+
+      <div class="modal-footer border-0 d-flex justify-content-between">
+        <a href="seat.html" class="btn btn-outline-danger px-4 py-2">Cancel</a>
+        <a href="payment.html" class="btn btn-danger px-4 py-2">Accept</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowTimeGo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="logo.jpeg">
+  <style>
+    body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #e5002a;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #000 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #e5002a !important;
+}
+
+
+/* Movie Cards */
+.movie-card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    border-radius: 10px;
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+}
+
+footer {
+    background-color: #222;
+    color: #ccc;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+/* Live Events Section */
+.live-card img {
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+.live-card:hover img {
+  transform: scale(1.05);
+}
+.live-card .card-title {
+  font-weight: 600;
+}
+
+/* Music Studio Carousel Styling */
+.music-card img {
+  border-radius: 10px;
+  height: 360px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.music-card:hover img {
+  transform: scale(1.05);
+}
+
+.date-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 70%, 70%;
+}
+footer {
+      background: #1f1f1f;
+      color: #b3b3b3;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    /* TOP CTA SECTION */
+    .footer-top {
+      background: #212121;
+      padding: 12px 25px;
+      border-bottom: 1px solid #333;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .footer-top span {
+      margin-right: 8px;
+    }
+
+    .footer-top button {
+      background: #ff4e6b;
+      border: none;
+      color: white;
+      padding: 6px 18px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    /* ICON STRIP */
+    .footer-icons {
+      background: #212121;
+      border-bottom: 1px solid #333;
+    }
+
+    .footer-big-icon {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    /* LINK SECTION */
+    .footer-links {
+      padding: 25px;
+      line-height: 26px;
+    }
+
+    .footer-links h6 {
+      color: #fff;
+      font-size: 15px;
+      margin-top: 25px;
+      font-weight: 600;
+    }
+
+    .footer-list {
+      color: #b3b3b3;
+      font-size: 13px;
+    }
+
+    /* SOCIAL ICONS */
+    .footer-social {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .footer-social i {
+      font-size: 18px;
+      margin: 0 8px;
+      color: #c9c9c9;
+      cursor: pointer;
+    }
+
+    .footer-social i:hover {
+      color: #ff4e6b;
+    }
+
+    /* COPYRIGHT */
+    .footer-bottom {
+      text-align: center;
+      font-size: 12px;
+      padding: 15px;
+      color: #777;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid px-4">
+       <a class="navbar-brand" href="app.html"><img src="logo.jpeg" width="50px"></a>
+      <form class="d-flex mx-auto" style="width: 50%;">
+        <input class="form-control me-2" type="search"
+          placeholder="Search for Movies, Events, Plays, Sports and Activities">
+      </form>
+      <div class="d-flex align-items-center">
+        <span class="me-3 fw-semibold">Vijayawada</span>
+        <button class="btn btn-danger me-2"><a href="signup.html" class="nav-link">Sign in</a></button>
+        <i class="bi bi-list fs-3"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Categories -->
+  <div class="container-fluid bg-light py-2 border-bottom">
+    <div class="d-flex justify-content-center gap-4">
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="plays.html" class="nav-link">Plays</a>
+      <a href="sports.html" class="nav-link">Sports</a>
+    </div>
+  </div>
+
+  <!-- Recommended Movies -->
+  <div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="fw-bold">Recommended Movies</h4>
+      <a href="#" class="text-danger fw-semibold text-decoration-none">See All ›</a>
+    </div>
+
+    <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Carousel Item 1 -->
+        <div class="carousel-item active">
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-2 col-sm-6">
+              <a href="details1.html">
+                <div class="card movie-card border-0">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OS8xMCAgMTIuNUsrIFZvdGVz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00423419-ltrrxjxemm-portrait.jpg"
+                    class="card-img-top rounded" alt="Movie 1">
+                  <div class="card-body">
+                    <h6 class="fw-semibold mt-2">The Girlfriend</h6>
+                    <p class="text-muted mb-0 small">Drama/Romantic</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <a href="details2.html">
+                <div class="card movie-card border-0">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-Ny41LzEwICAyLjJLKyBWb3Rlcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00437572-cbgbefggja-portrait.jpg"
+                    class="card-img-top rounded" alt="Movie 2">
+                  <div class="card-body">
+                    <h6 class="fw-semibold mt-2">Jatadhara</h6>
+                    <p class="text-muted mb-0 small">Action/Adventure/Fantasy/Myst..</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <a href="details3.html">
+                <div class="card movie-card border-0">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OC43LzEwICAxMC4xSysgVm90ZXM%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00443704-fertxdwfhs-portrait.jpg"
+                    class="card-img-top rounded" alt="Movie 3">
+                  <div class="card-body">
+                    <h6 class="fw-semibold mt-2">Predator: Badlands</h6>
+                    <p class="text-muted mb-0 small">Action/Sci-Fi/Thriller</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <a href="details4.html">
+                <div class="card movie-card border-0">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@like_202006280402.png,lx-24,ly-617,w-29,l-end:l-text,ie-NDYuMUsrIExpa2Vz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00432079-wpxpamtvdw-portrait.jpg"
+                    class="card-img-top rounded" alt="Movie 4">
+                  <div class="card-body">
+                    <h6 class="fw-semibold mt-2">Kaantha</h6>
+                    <p class="text-muted mb-0 small">Drama/Period/Thriller</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <a href="details3.html">
+                <div class="card movie-card border-0">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@like_202006280402.png,lx-24,ly-617,w-29,l-end:l-text,ie-MTEuN0srIExpa2Vz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00459712-aphrumzuzd-portrait.jpg"
+                    class="card-img-top rounded" alt="Movie 5">
+                  <div class="card-body">
+                    <h6 class="fw-semibold mt-2">Jigris</h6>
+                    <p class="text-muted mb-0 small">Comedy</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Carousel Item 2 -->
+        <div class="carousel-item">
+          <div class="row g-4 justify-content-center">
+
+            <div class="col-md-2 col-sm-6">
+              <a href="details6.html">
+                <div class="card movie-card border-0">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OS4zLzEwICAxLjZLKyBWb3Rlcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00468054-vpdunqvbqu-portrait.jpg"
+                    class="card-img-top rounded" alt="Movie 6">
+                  <div class="card-body">
+                    <h6 class="fw-semibold mt-2">The Great Pre-Wedding Show:</h6>
+                    <p class="text-muted mb-0 small">Comedy/Drama/Family/Romantic</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <a href="details7.html">
+                <div class="card movie-card border-0">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@like_202006280402.png,lx-24,ly-617,w-29,l-end:l-text,ie-MjAuNksrIExpa2Vz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00436197-ktudecpebz-portrait.jpg"
+                    class="card-img-top rounded" alt="Movie 7">
+                  <div class="card-body">
+                    <h6 class="fw-semibold mt-2">Santhana Prapthirasthu</h6>
+                    <p class="text-muted mb-0 small">Comedy/Family/Romantic</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <a href="details8.html">
+                <div class="card movie-card border-0">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OC8xMCAgMTMuNUsrIFZvdGVz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00418116-awdkvcjcwg-portrait.jpg"
+                    class="card-img-top rounded" alt="Movie 8">
+                  <div class="card-body">
+                    <h6 class="fw-semibold mt-2">Mass Jathara</h6>
+                    <p class="text-muted mb-0 small">Action/Drama</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <a href="details9.html"></a>
+              <div class="card movie-card border-0">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@like_202006280402.png,lx-24,ly-617,w-29,l-end:l-text,ie-Ni4zSysgTGlrZXM%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00467984-fpsfrgabxx-portrait.jpg"
+                  class="card-img-top rounded" alt="Movie 9">
+                <div class="card-body">
+                  <h6 class="fw-semibold mt-2">Love OTP</h6>
+                  <p class="text-muted mb-0 small">Comedy/Romantic</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <a href="details10.html"></a>
+              <div class="card movie-card border-0">
+                <img
+                  src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OC42LzEwICA2NDArIFZvdGVz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00469717-atvyltdagr-portrait.jpg"
+                  class="card-img-top rounded" alt="Movie 10">
+                <div class="card-body">
+                  <h6 class="fw-semibold mt-2">Dies Irae (Telugu)</h6>
+                  <p class="text-muted mb-0 small">Horror/Thriller
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- The Best of Live Events -->
+  <div class="container my-5">
+    <h4 class="fw-bold mb-4">The Best Of Live Events</h4>
+    <div class="row g-4">
+      <div class="col-md-3 col-sm-6">
+        <div class="card live-card text-center border-0">
+          <img
+            src="https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:l-text,ie-MTAgRXZlbnRz,co-FFFFFF,ff-Roboto,fs-64,lx-48,ly-320,tg-b,pa-8_0_0_0,l-end:w-300/comedy-shows-collection-202211140440.png"
+            class="card-img-top rounded" alt="Comedy Shows">
+          <div class="card-body">
+            <h5 class="card-title mt-2">Comedy Shows</h5>
+            <p class="text-muted mb-0">9 Events</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card live-card text-center border-0">
+          <img
+            src="https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:l-text,ie-MTArIEV2ZW50cw%3D%3D,co-FFFFFF,ff-Roboto,fs-64,lx-48,ly-320,tg-b,pa-8_0_0_0,l-end:w-300/kids-banner-desktop-collection-202503251132.png"
+            class="card-img-top rounded" alt="Kids">
+          <div class="card-body">
+            <h5 class="card-title mt-2">Kids</h5>
+            <p class="text-muted mb-0">10+ Events</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card live-card text-center border-0">
+          <img
+            src="https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:l-text,ie-MTArIEV2ZW50cw%3D%3D,co-FFFFFF,ff-Roboto,fs-64,lx-48,ly-320,tg-b,pa-8_0_0_0,l-end:w-300/music-shows-collection-202211140440.png"
+            class="card-img-top rounded" alt="Music Shows">
+          <div class="card-body">
+            <h5 class="card-title mt-2">Music Shows</h5>
+            <p class="text-muted mb-0">10+ Events</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card live-card text-center border-0">
+          <img
+            src="https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:l-text,ie-NSBFdmVudHM%3D,co-FFFFFF,ff-Roboto,fs-64,lx-48,ly-320,tg-b,pa-8_0_0_0,l-end:w-300/workshop-and-more-web-collection-202211140440.png"
+            class="card-img-top rounded" alt="Workshops & More">
+          <div class="card-body">
+            <h5 class="card-title mt-2">Workshops & More</h5>
+            <p class="text-muted mb-0">5 Events</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Your Music Studio Carousel -->
+  <div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="fw-bold">Your Music Studio</h4>
+      <a href="#" class="text-danger fw-semibold text-decoration-none">See All ›</a>
+    </div>
+
+    <div id="musicCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Carousel Item 1 -->
+        <div class="carousel-item active">
+          <div class="row g-4 justify-content-center">
+            <!-- 5 cards -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAxNCBGZWI%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00453218-wyskkudjyz-portrait.jpg"
+                    class="card-img-top rounded" alt="The Drum Circle">
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">The Drum Circle...</h6>
+                  <p class="text-muted mb-0 small">Vivanata,MG Road:..</p>
+                  <p class="text-muted small">Club Gigs</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-RnJpLCAxMiBEZWMgb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00469295-deyltmktub-portrait.jpg"
+                    class="card-img-top rounded" alt="Golden">
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">Jung Kook Exhibition "GOLDEN: The Moments"</h6>
+                  <p class="text-muted mb-0 small">Stage 1, Mehboob Studios: Mumbai</p>
+                  <p class="text-muted small">Artist Legacy</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-V2VkLCAxOSBOb3Y%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00450624-jycsztfxxy-portrait.jpg"
+                    class="card-img-top rounded" alt="travis scott">
+
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">Travis Scott: Circus Maximus Stadium Tour -Mumbai</h6>
+                  <p class="text-muted mb-0 small">Mahalaxmi RaceCourse: Mumbai</p>
+                  <p class="text-muted small">Concerts</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-RnJpLCAyNyBNYXI%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00467697-wrjqvxgpry-portrait.jpg"
+                    class="card-img-top rounded" alt="John Mayer">
+
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">Keinemusik - live in Mumbai</h6>
+                  <p class="text-muted mb-0 small">Mahalaxmi Race Course: Mumbai</p>
+                  <p class="text-muted small">Concerts</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-RnJpLCAxOSBEZWMgb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00457262-tsjtgtwxsm-portrait.jpg"
+                    class="card-img-top rounded" alt="Sunburn">
+
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">Sunburn Festival 2025</h6>
+                  <p class="text-muted mb-0 small">Infinity Bay: Sewri, Mumbai </p>
+                  <p class="text-muted small">Concerts</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Item 2 -->
+        <div class="carousel-item">
+          <div class="row g-4 justify-content-center">
+            <!-- Next 5 cards -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAxNCBGZWI%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00466059-fgcameflsl-portrait.jpg"
+                    class="card-img-top rounded" alt="Bandland">
+
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">Bandland 2026 Ft. Muse, Train, Karnivool and more!</h6>
+                  <p class="text-muted mb-0 small">NICE Grounds: Bengaluru</p>
+                  <p class="text-muted small">Concerts</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyOSBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end:l-image,i-discovery-catalog@@icons@@bundle-icon-shadow-4x.png,lx-15,ly-15,w-50,l-end/et00456000-evaefydfzg-portrait.jpg"
+                    class="card-img-top rounded" alt="Satrangi Re">
+
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">Satrangi Re by Sonu Nigam India Tour</h6>
+                  <p class="text-muted mb-0 small">Multiple Venues</p>
+                  <p class="text-muted small">Concerts</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAxOCBBcHI%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00462236-fjnrczyznj-portrait.jpg"
+                    class="card-img-top rounded" alt="CALVIN HARRIS ">
+
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">CALVIN HARRIS - Live in Mumbai</h6>
+                  <p class="text-muted mb-0 small">Venue To Be Announced:Mumbai</p>
+                  <p class="text-muted small">Concerts</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-VGh1LCAyMiBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00464841-ytcsperxrb-portrait.jpg"
+                    class="card-img-top rounded" alt="john Mayer ">
+
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">John Mayer Solo - Live In Mumbai, 2026</h6>
+                  <p class="text-muted mb-0 small">Mahalaxmi Race Course:Mumbai</p>
+                  <p class="text-muted small">Concerts</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <div class="position-relative">
+                  <img
+                    src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyNCBKYW4gb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00458267-asamvpqbrm-portrait.jpg"
+                    class="card-img-top rounded" alt="lollapalooza">
+
+                </div>
+                <div class="card-body px-1">
+                  <h6 class="fw-semibold mt-2">Lollapalooza India 2026</h6>
+                  <p class="text-muted mb-0 small">Mahalaxmi Race Course, Mumbai</p>
+                  <p class="text-muted small">Concerts</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#musicCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#musicCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Outdoor events -->
+  <div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="fw-bold">Outdoor events</h4>
+      <a href="#" class="text-danger fw-semibold text-decoration-none">See All ›</a>
+    </div>
+
+   <div id="outdoorCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- ================= SLIDE 1 ================= -->
+        <div class="carousel-item active">
+          <div class="row g-4 justify-content-center">
+
+            <!-- 1 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyOSBOb3Y%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00431671-duvwdmjwqx-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">'A' Certificate - Sravanthi Basa</h6>
+                <p class="text-muted mb-0 small">Vivanta, MG Road: Vijayawada</p>
+                <p class="text-muted small">Outdoor Event</p>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00396208-hftbpsvarm-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">BANANA RIDES @ Amaravati</h6>
+                <p class="text-muted mb-0 small">Bhavani Island: Vijayawada</p>
+                <p class="text-muted small">Adventure</p>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00445262-demannhxsx-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">Kadapa Wonderla Amusement Park</h6>
+                <p class="text-muted mb-0 small">Kadapa Wonderla Park</p>
+                <p class="text-muted small">Theme Park</p>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00396237-hjvvmmqvcg-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">Jet Ski Ride @ Amaravati</h6>
+                <p class="text-muted mb-0 small">Bhavani Island: Vijayawada</p>
+                <p class="text-muted small">Water Sports</p>
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00304533-cqymaznelz-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">Salar Jung Museum Visit</h6>
+                <p class="text-muted mb-0 small">Salar Jung Museum, Hyderabad</p>
+                <p class="text-muted small">Museum Visit</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 2 ================= -->
+        <div class="carousel-item">
+          <div class="row g-4 justify-content-center">
+
+            <!-- 6 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-RnJpLCAyMSBOb3Y%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00470462-vnckjdfhxq-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">Open Mic Performers</h6>
+                <p class="text-muted mb-0 small">PB Siddhartha College, Vijayawada</p>
+                <p class="text-muted small">Live Show</p>
+              </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00448948-rrhahzhjug-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">Brunch With Pool @ Vivanta</h6>
+                <p class="text-muted mb-0 small">Vivanta, MG Road: Vijayawada</p>
+                <p class="text-muted small">Food & Fun</p>
+              </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00434861-vvjttapypz-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">French Funyak Speed Boat</h6>
+                <p class="text-muted mb-0 small">Bhavani Island: Vijayawada</p>
+                <p class="text-muted small">Adventure Ride</p>
+              </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00446705-egvweysqnl-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">Statue of Equality, Hyderabad</h6>
+                <p class="text-muted mb-0 small">Venkannaguda, Hyderabad</p>
+                <p class="text-muted small">Temple Visit</p>
+              </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="col-md-2 col-sm-6">
+              <div class="card music-card border-0">
+                <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAxMyBEZWM%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00337260-lqabnnpnbz-portrait.jpg" class="card-img-top rounded">
+                <h6 class="fw-semibold mt-2">Fatima Ayesha Live</h6>
+                <p class="text-muted mb-0 small">Vivanta, MG Road: Vijayawada</p>
+                <p class="text-muted small">Comedy Show</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CONTROLS -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#outdoorCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3"></span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#outdoorCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
+      </button>
+    </div>
+  </div>
+
+<footer>
+
+    <div class="footer-top d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
+        <span>📢</span>
+        <span class="fw-semibold">List your Show</span>
+        <span>Got a show, event, activity or a great experience? Partner with us &amp; get listed on ShowTimeGo.</span>
+      </div>
+
+      <button>Contact today!</button>
+    </div>
+
+
+    <!-- ICONS -->
+    <div class="footer-icons px-4 py-4">
+      <div class="row text-center text-white small">
+
+        <div class="col-md-4 mb-3">
+          <div class="footer-big-icon">👤</div>
+          <p>24/7 CUSTOMER CARE</p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <div class="footer-big-icon">🎟️</div>
+          <p>RESEND BOOKING CONFIRMATION</p>
+        </div>
+
+        <div class="col-md-4">
+          <div class="footer-big-icon">✉️</div>
+          <p>SUBSCRIBE TO THE NEWSLETTER</p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- LINKS PART -->
+    <div class="footer-links">
+
+      <h6>MOVIES NOW SHOWING IN VIJAYAWADA</h6>
+      <p class="footer-list">Kannappa | Thandel | Game Changer | Bharateeyudu 2 | Lucky Baskhar | Love 360 | Kalki 2898
+      </p>
+
+      <h6>UPCOMING MOVIES IN VIJAYAWADA</h6>
+      <p class="footer-list">Masi | Vettaiyan | Pushpa 2 | Devara | Indian 3 | Kanguva | Love Insurance | Yodha</p>
+
+      <h6>EVENTS IN TOP CITIES</h6>
+      <p class="footer-list">Mumbai | Chennai | Bengaluru | Hyderabad | Pune | Kolkata | Kochi</p>
+
+      <h6>SPORTS EVENTS IN VIJAYAWADA</h6>
+      <p class="footer-list">Marathons | Running | Cycling | Chess | Fitness Events</p>
+
+      <h6>HELP</h6>
+      <p class="footer-list">About Us | Contact Us | Terms & Conditions | Privacy Policy</p>
+
+      <h6>WORLD CUP 2025 TEAMS (INDIA)</h6>
+      <p class="footer-list">India Womens CWC Matches 2025 | India Mens CWC Matches 2025 | Sri Lanka CWC Matches</p>
+
+    </div>
+
+
+    <!-- SOCIAL ICONS -->
+    <div class="footer-social">
+      <i>🌐</i>
+      <i>📘</i>
+      <i>🐦</i>
+      <i>📸</i>
+      <i>💼</i>
+      <i>▶️</i>
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+      © 2025 ShowTimeGo. All Rights Reserved.
+    </div>
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShowTimeGo</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #f9f9f9;
+    }
+
+    .overlay {
+      min-height: 100vh;
+    }
+
+    .get-started-card {
+      width: 380px;
+      border-radius: 20px;
+      padding: 30px 25px;
+    }
+
+    .btn-outline-dark {
+      border-radius: 10px;
+      height: 45px;
+      font-weight: 500;
+    }
+
+    input.form-control {
+      border: none;
+      border-bottom: 1px solid #ccc;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    input.form-control:focus {
+      border-color: #e63946;
+    }
+
+    /* Continue Button */
+    .btn-continue {
+  background-color: #e63946;
+  color: black;
+  border-radius: 10px;
+  font-weight: 500;
+  height: 45px;
+  width: 100%;
+  opacity: 1;          /* Always visible */
+  visibility: visible; /* Always visible */
+  transform: translateY(0);
+  transition: 0.35s ease;
+}
+
+
+    /* SHOW ONLY WHEN PHONE NUMBER IS VALID (10 digits) */
+    .phone-input:valid~.btn-continue {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .btn-continue:hover {
+      background-color: #d32f2f;
+    }
+
+    .terms {
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #6c757d;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="overlay d-flex align-items-center justify-content-center">
+    <div class="card shadow-lg get-started-card">
+      <div class="card-body text-center">
+        <h4 class="mb-4 fw-semibold">Get Started</h4>
+
+        <!-- Google -->
+        <button class="btn btn-outline-dark w-100 mb-3 d-flex align-items-center justify-content-center">
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" style="width:20px;" class="me-2">
+          Continue with Google
+        </button>
+
+        <!-- Email -->
+        <button class="btn btn-outline-dark w-100 mb-3 d-flex align-items-center justify-content-center">
+          <i class="bi bi-envelope me-2"></i>
+          Continue with Email
+        </button>
+
+        <!-- Apple -->
+        <button class="btn btn-outline-dark w-100 mb-3 d-flex align-items-center justify-content-center">
+          <i class="bi bi-apple me-2"></i>
+          Continue with Apple
+        </button>
+
+        <div class="text-muted my-3">OR</div>
+
+        <!-- MOBILE NUMBER FORM -->
+        <form action="app.html" method="GET">
+
+          <div class="input-wrapper">
+
+            <div class="input-group mb-2">
+              <span class="input-group-text">🇮🇳 +91</span>
+
+              <!-- PHONE INPUT: 10 digits required -->
+              <input type="tel" class="form-control phone-input" maxlength="10" pattern="\d{10}" required>
+            </div>
+
+            <!-- Continue Button (VISIBLE ONLY WHEN INPUT IS VALID) -->
+            <button type="submit" class="btn-continue mt-3">Continue</button>
+
+          </div>
+
+        </form>
+
+        <p class="terms">
+          I agree to the <a href="tc.html">Terms & Conditions</a> & <a href="#">Privacy Policy</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

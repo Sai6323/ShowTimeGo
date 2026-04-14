@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowTimeGo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="logo.jpeg">
+    <style>
+        /* Scooter Image */
+.scooter {
+    width: 120px;
+}
+
+/* Generic Seat Number Styling */
+.seat-numbers span {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.seat-numbers span:hover {
+    background: #ffe2e6;
+}
+
+.seat-numbers .active {
+    background: #ff5a71;
+    color: white;
+}
+
+/* Hide actual radio buttons */
+.seat-option input {
+    display: none;
+}
+
+/* Seat Styling */
+.seat-option span {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 50%;
+    transition: 0.2s;
+    display: inline-block;
+}
+
+/* Hover effect on seat */
+.seat-option span:hover {
+    background: #ffe2e6;
+}
+
+/* SELECTED seat styling */
+.seat-option input:checked + span {
+    background-color: #ff5a71;
+    color: white;
+}
+
+/* Text styles */
+.title {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 0;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 3px 0;
+}
+
+.available {
+    font-size: 12px;
+    color: green;
+}
+
+/* PROCEED BUTTON */
+.proceed-btn {
+    background: #111217;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 12px 40px;
+    border-radius: 35px;
+    text-decoration: none;  /* Removes underline */
+    display: inline-block;
+}
+
+.proceed-btn:hover {
+    background: #000;
+    color: white;
+}
+
+    </style>
+</head>
+
+<body class="bg-light d-flex justify-content-center p-4">
+
+    <div class="card shadow-lg p-4 rounded-4" style="width: 380px;">
+
+        <h4 class="text-center mb-3">How many seats?</h4>
+
+        <div class="text-center">
+            <img src="https://cdn-icons-png.flaticon.com/128/3421/3421987.png" class="img-fluid scooter mb-3">
+        </div>
+
+        <!-- Seat Numbers -->
+        <div class="d-flex justify-content-center gap-3 mb-3 seat-numbers">
+            <label class="seat-option">
+                <input type="radio" name="seats" value="1">
+                <span>1</span>
+            </label>
+
+            <label class="seat-option">
+                <input type="radio" name="seats" value="2" checked>
+                <span>2</span>
+            </label>
+
+            <label class="seat-option">
+                <input type="radio" name="seats" value="3">
+                <span>3</span>
+            </label>
+
+            <label class="seat-option">
+                <input type="radio" name="seats" value="4">
+                <span>4</span>
+            </label>
+
+            <label class="seat-option">
+                <input type="radio" name="seats" value="5">
+                <span>5</span>
+            </label>
+
+            <label class="seat-option">
+                <input type="radio" name="seats" value="6">
+                <span>6</span>
+            </label>
+        </div>
+
+
+        <hr>
+
+        <!-- Price Section -->
+        <div class="row text-center mb-4">
+            <div class="col-4">
+                <p class="title">NORMAL</p>
+                <p class="price">₹177</p>
+                <p class="available">AVAILABLE</p>
+            </div>
+
+            <div class="col-4">
+                <p class="title">EXECUTIVE</p>
+                <p class="price">₹177</p>
+                <p class="available">AVAILABLE</p>
+            </div>
+
+            <div class="col-4">
+                <p class="title">PREMIUM</p>
+                <p class="price">₹177</p>
+                <p class="available">AVAILABLE</p>
+            </div>
+        </div>
+
+        <!-- Button -->
+        
+           <center><a href="seat.html" class="proceed-btn">Select Seats</a></center>
+
+        </button>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

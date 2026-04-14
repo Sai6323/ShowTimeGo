@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plays in Vijayawada | ShowTimeGo</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        /* ----------------------------------------------------
+   GLOBAL STYLES
+---------------------------------------------------- */
+        body {
+            background-color: #f8f9fa;
+            font-family: "Poppins", sans-serif;
+        }
+
+        h5,
+        h6 {
+            font-weight: 600;
+        }
+
+        /* Utility */
+        a {
+            text-decoration: none !important;
+        }
+
+        /* ----------------------------------------------------
+   NAVBAR
+---------------------------------------------------- */
+   .navbar {
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #e5002a;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #000 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #e5002a !important;
+}
+
+        /* ----------------------------------------------------
+   FILTERS (LEFT SIDEBAR)
+---------------------------------------------------- */
+        .filter-box {
+            background: #fff;
+            border-radius: 8px;
+            transition: 0.3s ease;
+        }
+
+        .filter-box:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        .filter-header {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .filter-header i {
+            transition: 0.3s;
+        }
+
+        .filter-box .collapse.show+i {
+            transform: rotate(180deg);
+        }
+
+        /* Small Buttons */
+        .filter-box button.active {
+            background: #dc3545 !important;
+            color: white !important;
+        }
+
+        /* Checkbox spacing */
+        .form-check {
+            margin-bottom: 6px;
+        }
+
+        /* ----------------------------------------------------
+   PLAY CARDS (RIGHT SIDE GRID)
+---------------------------------------------------- */
+        .play-card,
+        .music-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        .play-card img,
+        .music-card img {
+            border-radius: 10px;
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .play-card:hover,
+        .music-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Title */
+        .play-card h6,
+        .music-card h6 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Text */
+        .play-card p,
+        .music-card p {
+            font-size: 13px;
+            margin-bottom: 2px;
+        }
+
+        /* Badges */
+        .badge {
+            font-size: 11px;
+            padding: 5px 8px;
+        }
+
+        /* ----------------------------------------------------
+   PAGE INFO SECTION
+---------------------------------------------------- */
+        .container p {
+            line-height: 1.6;
+        }
+
+        /* ----------------------------------------------------
+   FOOTER
+---------------------------------------------------- */
+      footer {
+      background: #1f1f1f;
+      color: #b3b3b3;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    /* TOP CTA SECTION */
+    .footer-top {
+      background: #212121;
+      padding: 12px 25px;
+      border-bottom: 1px solid #333;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .footer-top span {
+      margin-right: 8px;
+    }
+
+    .footer-top button {
+      background: #ff4e6b;
+      border: none;
+      color: white;
+      padding: 6px 18px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    /* ICON STRIP */
+    .footer-icons {
+      background: #212121;
+      border-bottom: 1px solid #333;
+    }
+
+    .footer-big-icon {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    /* LINK SECTION */
+    .footer-links {
+      padding: 25px;
+      line-height: 26px;
+    }
+
+    .footer-links h6 {
+      color: #fff;
+      font-size: 15px;
+      margin-top: 25px;
+      font-weight: 600;
+    }
+
+    .footer-list {
+      color: #b3b3b3;
+      font-size: 13px;
+    }
+
+    /* SOCIAL ICONS */
+    .footer-social {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .footer-social i {
+      font-size: 18px;
+      margin: 0 8px;
+      color: #c9c9c9;
+      cursor: pointer;
+    }
+
+    .footer-social i:hover {
+      color: #ff4e6b;
+    }
+
+    /* COPYRIGHT */
+    .footer-bottom {
+      text-align: center;
+      font-size: 12px;
+      padding: 15px;
+      color: #777;
+    }
+
+
+        /* ----------------------------------------------------
+   RESPONSIVE SETTINGS
+---------------------------------------------------- */
+        @media (max-width: 768px) {
+            .play-card img {
+                height: 200px;
+            }
+
+            .navbar form {
+                width: 100% !important;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .play-card img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+ <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid px-4">
+       <a class="navbar-brand" href="app.html"><img src="logo.jpeg" width="50px"></a>
+      <form class="d-flex mx-auto" style="width: 50%;">
+        <input class="form-control me-2" type="search"
+          placeholder="Search for Movies, Events, Plays, Sports and Activities">
+      </form>
+      <div class="d-flex align-items-center">
+        <span class="me-3 fw-semibold">Vijayawada</span>
+        <button class="btn btn-danger me-2">Hi! Guest</a></button>
+        <i class="bi bi-list fs-3"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Categories -->
+  <div class="container-fluid bg-light py-2 border-bottom">
+    <div class="d-flex justify-content-center gap-4">
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="plays.html" class="nav-link">Plays</a>
+      <a href="sports.html" class="nav-link">Sports</a>
+    </div>
+  </div>
+
+    <!-- MAIN -->
+    <div class="container my-4">
+        <div class="row">
+
+            <!-- FILTERS (LEFT) -->
+            <div class="col-md-3">
+                <h5 class="fw-bold mb-3">Filters</h5>
+
+                <!-- 1. Date Filter -->
+                <div class="filter-box mb-3 p-3 border rounded bg-white">
+                    <div class="d-flex justify-content-between filter-header" data-bs-toggle="collapse"
+                        data-bs-target="#dateFilter">
+                        <span>Date</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+
+                    <div id="dateFilter" class="collapse show mt-2">
+                        <button class="btn btn-light btn-sm me-2 active">Today</button>
+                        <button class="btn btn-light btn-sm">Tomorrow</button>
+
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox">
+                            <label class="form-check-label">This Weekend</label>
+                        </div>
+
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Date Range</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Language Filter -->
+                <div class="filter-box mb-3 p-3 border rounded bg-white">
+                    <div class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#langFilter">
+                        <span>Language</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+
+                    <div id="langFilter" class="collapse mt-2">
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Marathi</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Telugu</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Hindi</div>
+                    </div>
+                </div>
+
+                <!-- 3. Category -->
+                <div class="filter-box mb-3 p-3 border rounded bg-white">
+                    <div class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#catFilter">
+                        <span>Categories</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+
+                    <div id="catFilter" class="collapse mt-2">
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Theatre</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Storytelling</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PLAYS GRID (RIGHT SIDE) -->
+            <div class="col-md-9">
+                <h5 class="fw-bold">Plays In Vijayawada</h5>
+                <span class="badge bg-danger mb-2">Theatre</span>
+                <div class="row mt-3 g-4">
+
+                    <!-- PLAY CARD -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card border-0 play-card shadow-sm">
+                            <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAxNiBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00455674-kwftvwgkee-portrait.jpg"
+                                class="card-img-top rounded">
+
+                            <div class="card-body px-0"></div>
+
+                            <h6>Shivaji Underground in Bhennagar Mohalla</h6>
+                            <p class="text-muted small mb-1">Acharya Pralhad Keshav...</p>
+                            <p class="small">₹300 onwards</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicate this card for more plays -->
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- TEXT SECTION -->
+    <div class="container my-5">
+        <h5 class="fw-bold">Book Tickets for Upcoming Plays in Vijayawada on ShowTimeGo</h5>
+        <p class="text-muted small">
+            Theatre plays offer you the experience to delve into the outstanding stories staged...
+        </p>
+
+        <h6 class="fw-bold mt-4">Play theatres in Vijayawada</h6>
+        <p class="text-muted small">
+            Theatre gives you a great chance to break the monotonous routine...
+        </p>
+
+        <h6 class="fw-bold mt-4">Top plays in Vijayawada</h6>
+        <p class="text-muted small">
+            They are available on the page. Browse the website and go through...
+        </p>
+    </div>
+
+    <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-top d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
+        <span>📢</span>
+        <span class="fw-semibold">List your Show</span>
+        <span>Got a show, event, activity or a great experience? Partner with us &amp; get listed on ShowTimeGo.</span>
+      </div>
+
+      <button>Contact today!</button>
+    </div>
+
+
+    <!-- ICONS -->
+    <div class="footer-icons px-4 py-4">
+      <div class="row text-center text-white small">
+
+        <div class="col-md-4 mb-3">
+          <div class="footer-big-icon">👤</div>
+          <p>24/7 CUSTOMER CARE</p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <div class="footer-big-icon">🎟️</div>
+          <p>RESEND BOOKING CONFIRMATION</p>
+        </div>
+
+        <div class="col-md-4">
+          <div class="footer-big-icon">✉️</div>
+          <p>SUBSCRIBE TO THE NEWSLETTER</p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- LINKS PART -->
+    <div class="footer-links">
+
+      <h6>MOVIES NOW SHOWING IN VIJAYAWADA</h6>
+      <p class="footer-list">Kannappa | Thandel | Game Changer | Bharateeyudu 2 | Lucky Baskhar | Love 360 | Kalki 2898
+      </p>
+
+      <h6>UPCOMING MOVIES IN VIJAYAWADA</h6>
+      <p class="footer-list">Masi | Vettaiyan | Pushpa 2 | Devara | Indian 3 | Kanguva | Love Insurance | Yodha</p>
+
+      <h6>EVENTS IN TOP CITIES</h6>
+      <p class="footer-list">Mumbai | Chennai | Bengaluru | Hyderabad | Pune | Kolkata | Kochi</p>
+
+      <h6>SPORTS EVENTS IN VIJAYAWADA</h6>
+      <p class="footer-list">Marathons | Running | Cycling | Chess | Fitness Events</p>
+
+      <h6>HELP</h6>
+      <p class="footer-list">About Us | Contact Us | Terms & Conditions | Privacy Policy</p>
+
+      <h6>WORLD CUP 2025 TEAMS (INDIA)</h6>
+      <p class="footer-list">India Womens CWC Matches 2025 | India Mens CWC Matches 2025 | Sri Lanka CWC Matches</p>
+
+    </div>
+
+
+    <!-- SOCIAL ICONS -->
+    <div class="footer-social">
+      <i>🌐</i>
+      <i>📘</i>
+      <i>🐦</i>
+      <i>📸</i>
+      <i>💼</i>
+      <i>▶️</i>
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+      © 2025 ShowTimeGo. All Rights Reserved.
+    </div>
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.js"></script>
+</body>
+
+</html>
